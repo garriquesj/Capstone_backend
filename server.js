@@ -1,21 +1,21 @@
 //_________dependcies______
 require('dotenv').config();
 //_________set up port,express create , application
-const { PORT = 9000, MONGODB_URL } = process.env;
+const PORT = process.env.PORT || 9000;
 const express = require('express');
 const app = express();
 //____imports____
 const mongoose = require('mongoose')
+// ____import middlware____
+const cors = require("cors");
+const morgan = require("morgan");
 
 // ____Establish Connection____
-mongoose.connect(MONGODB_URL, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-});
+
 //____middleware____
 app.use(cors()); // to prevent cors errors, open access to all origins
 app.use(morgan("dev")); // logging
-app.use(express.json()); // parse json bodies
+app.use(express.json()); // parse json bodieswill not need
 
 // ___Connection Events___
 mongoose.connection
@@ -27,5 +27,9 @@ mongoose.connection
 app.get("/",(req,res) => { 
     res.send('hello world');
 });
+//_____index____
+//_____create_____
+//_____show
+//_____detail
 //_____listener_____
 app.listen(PORT, () => console.log(`ITS OVER ${PORT}!!!`));

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const archModelsSchema =new mongoose.Schema({
+const archModelSchema =new mongoose.Schema({
     project: { type: String, 
             required: [true, "please choose a user name"]
             },//set minimum name length later
@@ -12,5 +12,5 @@ const archModelsSchema =new mongoose.Schema({
     
 });
 
-const ArchModels = mongoose.model('ArchModels', archModelsSchema);
-module.exports = ArchModels;
+const ArchModel = mongoose.model('ArchModel', archModelSchema);
+module.exports = ArchModel;
