@@ -3,7 +3,7 @@ const archModelSchema =new mongoose.Schema({
     project: { type: String, 
             required: [true, "please choose a user name"]
             },//set minimum name length later
-    img: { type: String,
+    img: { type: [String],
             required: [true, "please enter URL"],
             },
     material: { type: String,
