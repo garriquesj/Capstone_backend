@@ -15,5 +15,5 @@ const renderSchema =new mongoose.Schema({
     
 });
 
-const RenderSchema = mongoose.model('RenderSchema', renderSchema);
-module.exports = RenderSchema;
+const Render = mongoose.model('RenderSchema', renderSchema);
+module.exports = Render;

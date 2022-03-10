@@ -10,9 +10,9 @@ const creatorSchema =new mongoose.Schema({
         email :{type:String,
                 required: [true, 'please enter email address'],
                 },
-        usertype: { type: String,
+        freelancer: { type: String,
                 enum: {
-                values: ['Freelancer', 'Exhibitionist'],
+                values: ['true', 'false'],
                 message: '{VALUE} is not supported'
                 }
         }        
