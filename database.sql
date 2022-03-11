@@ -16,7 +16,8 @@ CREATE TABLE projects (
     drawing_urls TEXT [] NULL,
     archModel_urls TEXT [] NULL,
     rendering_urls TEXT [] NULL,
-    created_by INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+    created_by TEXT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,--unpushed changed
+    creator_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
     posted_on VARCHAR(255) NOT NULL,
     like_count INTEGER DEFAULT 0
     

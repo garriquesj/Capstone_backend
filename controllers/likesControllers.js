@@ -1,0 +1,1 @@
+//do  not think i need this likes is really jus a tallied array so i just need to to right align to increment and decrement said integer

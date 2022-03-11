@@ -1,5 +1,5 @@
 const db = require("../models");
-const Project = db.articles;
+const Project = db.projects;
 const User = db.users;
 const Op = db.Sequelize.Op;
 
@@ -135,7 +135,7 @@ exports.findAllBySearch = (req, res) => {
             });
         };
     
-    // Update single article
+    // Update single proj
     exports.update = (req, res) => {
     const id = req.params.id;
     
@@ -190,7 +190,7 @@ exports.findAllBySearch = (req, res) => {
     // Set Article's User
     
 
-    // Deletes user_project entry from article side
+    // Deletes user_project entry from project side
     exports.deleteProject = (req, res) => {
     const projectId = req.params.id
     const userId = req.body.userId

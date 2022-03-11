@@ -1,5 +1,5 @@
     //set up port,express create , application
-const  PORT = 9000;
+const  PORT = process.env.PORT || 9000;
 // import dependices
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -14,33 +14,25 @@ db.sequelize.sync().then(() => {//wth is this thing
     console.log("DB connected");
 });
 
-
+var corsOptions = {
+    origin: "http://localhost:9001"
+};
     //middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json()); // to prevent cors errors, open access to all origins
 // app.use(morgan("dev")); // logging
-app.use(express.json()); // parse json bodies
+
 app.use(bodyParser.json());
+require("./routes/projectRoutes")(app);
+require("./routes/userRoutes")(app);
 
-    //routes
-app.get("/",(req,res) => { 
-    res.send('hello world');
-});
+//     //routes
+// app.get("/",(req,res) => { 
+//     res.send('hello world');
+// });
 
-    //index
-app.get("/projects",async (req,res) => {
-    try{
-        res.json(await Projects.find({}));
-    } catch (error) {}//place404 here
-});
-    //create
-app.post("/users", async (req, res)=> {
-    try {
-        console.log(req.body)
-    } catch (error) {
-        console.error(err.message);
-    }
-});
+app.use(bodyParser.urlencoded({ extended: true }));
+
     //show
     //detail
     //istener

@@ -124,25 +124,25 @@ User.destroy({
 // Reverse of version in project.controller
 // This does not override any entries
 
-exports.setUserProject = (req, res) => {
-    const userId = req.params.id
-    const projectId = req.body.projectId
+// exports.setUserProject = (req, res) => {
+//     const userId = req.params.id
+//     const projectId = req.body.projectId
 
-    User.findByPk(userId).then(user => {
-        Project.findByPk(projectId).then(project => {
-        user.addProject([project]);
-        }).then(() => {
-            res.send("user_project successfully updated");
-        } 
-        )
-        .catch(err => {
-        res.status(500).send({
-            message:
-            err.message || "Some error occurred while retrieving users."
-        });
-        });
-    })
-}
+//     User.findByPk(userId).then(user => {
+//         Project.findByPk(projectId).then(project => {
+//         user.addProject([project]);
+//         }).then(() => {
+//             res.send("user_project successfully updated");
+//         } 
+//         )
+//         .catch(err => {
+//         res.status(500).send({
+//             message:
+//             err.message || "Some error occurred while retrieving users."
+//         });
+//         });
+//     })
+// }
 
 // Deletes user_project entry from user side_______________
 exports.deleteUserProject = (req, res) => {
