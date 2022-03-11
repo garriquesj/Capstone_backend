@@ -23,7 +23,7 @@ const project = {
     posted_on: req.body.posted_on,
     like_count: req.body.like_count, 
 }
-
+//create project
 Project.create(project)
     .then(data => {
         res.send(data);
@@ -36,11 +36,12 @@ Project.create(project)
     });
 };    
 
-// Search Projects by project name
+// Search Projects by project name incase more than one project has the ssame name to return them 
 exports.findAllBySearch = (req, res) => {
     const projectName = req.query.projectName;
     
     //think up ways to break up project on front pages
+    //each route will grab a url model to rep categories
 
     let condition = projectName ? { projectName: { [Op.iLike]: `%${projectName}%` } } : null;//research ilike
     // var condition2 = final_title ? { final_title: { [Op.iLike]: `%${final_title}%` } } : null;
@@ -143,40 +144,40 @@ exports.findAllByUser = (req, res) => {
 
         Article.findAll({ where: condition })
         .then(data => {
-          res.send(data);
+        res.send(data);
         })
         .catch(err => {
-          res.status(500).send({
+        res.status(500).send({
             message:
-              err.message || "Some error occurred while retrieving articles."
-          });
+            err.message || "Some error occurred while retrieving articles."
+        });
         });
     };
     
     
     // Update single article
     exports.update = (req, res) => {
-      const id = req.params.id;
+    const id = req.params.id;
     
-      Article.update(req.body, {
+    Article.update(req.body, {
         where: { id: id }
-      })
+    })
         .then(num => {
-          if (num == 1) {
+        if (num == 1) {
             res.send({
-              message: "Article was updated successfully."
+            message: "Article was updated successfully."
             });
-          } else {
+        } else {
             res.send({
-              message: `Cannot update Article with id=${id}. Maybe Article was not found or req.body is empty!`
+            message: `Cannot update Article with id=${id}. Maybe Article was not found or req.body is empty!`
             });
-          }
+        }
         })
         .catch(err => {
-          res.status(500).send({
+        res.status(500).send({
             message:
-              err.message || `Error updating Tutorial with id = ${id}`
-          });
+            err.message || `Error updating Tutorial with id = ${id}`
+        });
         });
     };
     
@@ -239,10 +240,10 @@ Article.findByPk(articleId).then(article => {
     const projectId = req.params.id
     const userId = req.body.userId
     
-    Article.findByPk(articleId).then(article => {
-        article.removeUser([userId]);
+    Project.findByPk(projectId).then(project => {
+        project.removeUser([userId]);
     }).then(() => {
-        res.send("user_article successfully yeeted");
+        res.send("user_project successfully deleted");
     })
     .catch(err => {
         res.status(500).send({

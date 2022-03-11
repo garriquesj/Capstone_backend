@@ -49,7 +49,7 @@ exports.findOne = (req, res) => {
     const id = req.params.id;
 
 User.findAll({
-    where: { id: id},
+    where: { id: id},//this is what specifies one
     include: "projects"
 })
     .then(data => {
