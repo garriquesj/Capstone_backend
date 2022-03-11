@@ -23,6 +23,6 @@ module.exports = app => {
 
     // delete project for user....do i really need this though I can just delete a project already
     router.delete("/:id/deleteProject", users.deleteUserProject)
-    app.use('/api/users', router);//the hell is this
-    app.use('/back_end/users', router);//the hell is this
+    // app.use('/api/users', router);//the hell is this
+    app.use('/users', router);//the hell is this
 };
