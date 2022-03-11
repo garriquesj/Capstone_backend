@@ -1,18 +1,26 @@
-
     //set up port,express create , application
 const  PORT = 9000;
-    //import middlware
-const express = require('express');
-const app = express();
+// import dependices
+const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
-const morgan = require("morgan");
-const pool =require("./db.js")//query postgress
+
+// create Express app
+const app = express()
+// database
+const db = require("./models");
+db.sequelize.sync().then(() => {//wth is this thing
+    
+    console.log("DB connected");
+});
+
 
     //middleware
 app.use(cors());
 app.use(express.json()); // to prevent cors errors, open access to all origins
-app.use(morgan("dev")); // logging
+// app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
+app.use(bodyParser.json());
 
     //routes
 app.get("/",(req,res) => { 

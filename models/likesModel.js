@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
         const Likes = sequelize.define("likes", {
-                liked_on: {
+                liked: {
                         type: Sequelize.STRING,
                 },
         });

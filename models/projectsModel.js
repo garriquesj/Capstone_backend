@@ -5,28 +5,25 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
         },
         bio: {
-            type: Sequailze.STRING,
+            type: Sequelize.STRING,
         },
         drawing_urls: {
-            type: Sequailze.STRING,
+            type: Sequelize.STRING,
         },
         archModel_urls: {
-            type: Sequailze.STRING,
+            type: Sequelize.STRING,
         },
         rendering_urls: {
-            type: Sequailze.STRING,
-        },
-        rendering_urls: {
-            type: Sequailze.STRING,
+            type: Sequelize.STRING,
         },
         created_by: {
-            type: Sequailze.STRING,
+            type: Sequelize.STRING,
         },
         posted_on: {
-            type: Sequailze.STRING,
+            type: Sequelize.STRING,
         },
         like_count: {
-            type: Sequailze.INTEGER,
+            type: Sequelize.INTEGER,
         },
     });
     return Projects;

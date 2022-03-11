@@ -199,7 +199,14 @@
     "type": "git",
     "url": "git+https://github.com/garriquesj/Capstone_backend.git"
   },
-  "keywords": [],
+  "keywords": [
+    "rest",
+    "api",
+    "node",
+    "express",
+    "postgresql",
+    "sequelize"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {

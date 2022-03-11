@@ -4,7 +4,7 @@ CREATE TABLE users(
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    password_ VARCHAR(255) NOT NULL, --research password creation and wt
+    password VARCHAR(255) NOT NULL, --research password creation and wt
     bio TEXT DEFAULT '',
     likes INTEGER DEFAULT 0,
     freelance BOOLEAN
@@ -30,8 +30,10 @@ CREATE TABLE likes
 );
 
 
+;
+)
 
 
-
-
-
+INSERT INTO users (username, email,password,bio,freelance)
+VALUES(
+    "jonDough","jdough@gmail","jonDough","biooooo",true);

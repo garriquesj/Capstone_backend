@@ -4,16 +4,16 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.STRING,
         },
         email: {
-                type: Sequailze.STRING,
+                type: Sequelize.STRING,
         },
         password: {
-                type: Sequailze.STRING,
+                type: Sequelize.STRING,
         },
         bio: {
-                type: Sequailze.STRING,
+                type: Sequelize.STRING,
         },
         likes: {
-                type: Sequailze.INTEGER,
+                type: Sequelize.INTEGER,//i need to re configure likes
         }
         });
         return User;
