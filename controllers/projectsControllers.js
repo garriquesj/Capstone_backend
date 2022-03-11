@@ -44,7 +44,7 @@ exports.findAllBySearch = (req, res) => {
     //each route will grab a url model to rep categories
 
     let condition = projectName ? { projectName: { [Op.iLike]: `%${projectName}%` } } : null;//research ilike
-    // var condition2 = final_title ? { final_title: { [Op.iLike]: `%${final_title}%` } } : null;
+    //or i could do where project name =project name confere with howie to see which is more effieceint
 
     Project.findAll({ where: condition })
         .then(data => {
@@ -74,7 +74,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find individual article by ID
+// Find individual project by ID
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
@@ -102,9 +102,6 @@ exports.findOne = (req, res) => {
 exports.findAllByUser = (req, res) => {
     const created_by = req.params.created_by;
     
-    // var condition = created_by ? { created_by: { [Op]: `%${created_by}%` } } : null;
-    
-    
     Project.findAll({
         where: {
         created_by: created_by
@@ -123,9 +120,7 @@ exports.findAllByUser = (req, res) => {
 // find by date
     exports.findAllByDate = (req, res) => {
         const posted_on = req.params.posted_on;
-        
-        let condition = posted_on ? { posted_on: { [Op]: `%${posted_on}%` } } : null;
-        
+
         Project.findAll({
             where: {
             posted_on: posted_on
@@ -141,69 +136,56 @@ exports.findAllByUser = (req, res) => {
             });
             });
         };
-
-        Article.findAll({ where: condition })
-        .then(data => {
-        res.send(data);
-        })
-        .catch(err => {
-        res.status(500).send({
-            message:
-            err.message || "Some error occurred while retrieving articles."
-        });
-        });
-    };
-    
     
     // Update single article
     exports.update = (req, res) => {
     const id = req.params.id;
     
-    Article.update(req.body, {
+   Project.update(req.body, {
         where: { id: id }
     })
         .then(num => {
         if (num == 1) {
             res.send({
-            message: "Article was updated successfully."
+            message: "Project was updated successfully."
             });
         } else {
             res.send({
-            message: `Cannot update Article with id=${id}. Maybe Article was not found or req.body is empty!`
+            message: `Cannot update Projrct with id=${id}. Maybe Project was not found or req.body is empty!`
             });
         }
         })
         .catch(err => {
         res.status(500).send({
             message:
-            err.message || `Error updating Tutorial with id = ${id}`
+            err.message || `Error updating user with id = ${id}`
         });
         });
     };
     
     // Delete single project
     exports.delete = (req, res) => {
-      const id = req.params.id;
+        const id = req.params.id;
     
-      Article.destroy({
+        Project.destroy({
         where: { id: id }
-      })
+    })
         .then(num => {
-          if (num == 1) {
+        if (num == 1) {
             res.send({
-              message: "Article deleted successfully."
+                message: "Project deleted successfully."
             });
-          } else {
+        } else {
             res.send({
-              message: `Could not delete Article with id: ${id}. Article may not have been found.`
-            });
-          }
+                message: `Could not delete Projectwith id: ${id}. Project may not have been found.`
+                });
+            }
         })
         .catch(err => {
-          res.status(500).send({
+        res.status(500).send({
             message:
-              err.message || `Could not delete Tutorial with id: ${id}.`
-          });
+            err.message || `Could not delete user with id: ${id}.`
+            });
         });
     };
     
@@ -219,21 +201,21 @@ exports.findAllByUser = (req, res) => {
     const articleId = req.params.id
     const userId = req.body.userId
     
-Article.findByPk(articleId).then(article => {
-        User.findByPk(userId).then(user => {
-        article.addUser([...user]);
-        }).then(() => {
-        res.send("user_article successfully updated");
-        } 
-    )
-        .catch(err => {
-        res.status(500).send({
-            message:
-            err.message || "Some error occurred while retrieving articles."
-        });
-        });
-    })
-    }
+// Project.findByPk(projectId).then(project => {
+//         User.findByPk(userId).then(user => {
+//         project.addUser([...user]);
+//         }).then(() => {
+//         res.send("user_project successfully updated");
+//         } 
+//     )
+//         .catch(err => {
+//         res.status(500).send({
+//             message:
+//             err.message || "Some error occurred while retrieving projects."
+//         });
+//         });
+//     })
+//     }
     
     // Deletes user_project entry from article side
     exports.deleteProject = (req, res) => {
@@ -251,4 +233,5 @@ Article.findByPk(articleId).then(article => {
             err.message || "Some error occurred while deleting reference."
         });
     });
-    }
+}
+}
