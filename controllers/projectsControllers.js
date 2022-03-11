@@ -5,14 +5,12 @@ const Op = db.Sequelize.Op;
 
 // create and save projects 
 exports.create = (req, res) => {
-    if (!req.body.projectName || !req.body.created_by) { //maybe get rid of create by param
+    if (!req.body.projectName || !req.body.created_by) { 
         res.status(400).send({
             message: "Content cannot be empty."
         });
         return;
     }
-//may not to delete
-
 const project = {
     projectname: req.body.projectname,
     bio: req.body.bio,
@@ -60,7 +58,7 @@ exports.findAllBySearch = (req, res) => {
 
 
 // all projects
-exports.findAll = (req, res) => {
+    exports.findAll = (req, res) => {
 
     Project.findAll()
         .then(data => {
@@ -75,7 +73,7 @@ exports.findAll = (req, res) => {
 };
 
 // Find individual project by ID
-exports.findOne = (req, res) => {
+    exports.findOne = (req, res) => {
     const id = req.params.id;
 
     Project.findAll({
@@ -99,7 +97,7 @@ exports.findOne = (req, res) => {
         });
     };
 
-exports.findAllByUser = (req, res) => {
+    exports.findAllByUser = (req, res) => {
     const created_by = req.params.created_by;
     
     Project.findAll({
@@ -141,7 +139,7 @@ exports.findAllByUser = (req, res) => {
     exports.update = (req, res) => {
     const id = req.params.id;
     
-   Project.update(req.body, {
+    Project.update(req.body, {
         where: { id: id }
     })
         .then(num => {
@@ -191,32 +189,7 @@ exports.findAllByUser = (req, res) => {
     
     // Set Article's User
     
-    // Tried using (num == 1) convention from .update and .destroy above, but this returned error even on successful
-    // addition to user_article join table. This runs without errors and adds new document to user_article table, but
-    // the "data" being returned is empty
-    
-    // Will not create duplicate entries, but does not give an error if you attempt to
-    
-    exports.setArticleUser = (req, res) => {
-    const articleId = req.params.id
-    const userId = req.body.userId
-    
-// Project.findByPk(projectId).then(project => {
-//         User.findByPk(userId).then(user => {
-//         project.addUser([...user]);
-//         }).then(() => {
-//         res.send("user_project successfully updated");
-//         } 
-//     )
-//         .catch(err => {
-//         res.status(500).send({
-//             message:
-//             err.message || "Some error occurred while retrieving projects."
-//         });
-//         });
-//     })
-//     }
-    
+
     // Deletes user_project entry from article side
     exports.deleteProject = (req, res) => {
     const projectId = req.params.id
@@ -233,5 +206,4 @@ exports.findAllByUser = (req, res) => {
             err.message || "Some error occurred while deleting reference."
         });
     });
-}
-}
+};
