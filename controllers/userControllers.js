@@ -5,16 +5,16 @@ const Op = db.Sequelize.Op;//whats this for
 
 // Create and Save User_____________________________
 exports.create = (req, res) => {
-if (!req.body.username || !req.body.password_ || !req.body.email) {// why ois it 'or' and not 'and'
+if (!req.body.username || !req.body.password|| !req.body.email) {// why ois it 'or' and not 'and'
     res.status(400).send({
-    message: "Content cannot be empty."
+
     });
     return;
 }
 const user = {
     username: req.body.username,
     email: req.body.email,
-    password_: req.body.password_,
+    password_: req.body.password,
     bio: req.body.bio,
     likes: req.body.likes
 }

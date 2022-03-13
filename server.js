@@ -4,7 +4,11 @@ const  PORT = process.env.PORT || 9000;
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+// const { Sequelize } = require('@sequelize/core');
+// const sequelize = new Sequelize('arcsource', 'jay', 'jay', {
+//     host: 'localhost',
+//     dialect:'postgres'
+// });
 // create Express app
 const app = express()
 // database

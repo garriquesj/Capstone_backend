@@ -1,11 +1,16 @@
 
 module.exports = (sequelize, Sequelize) => {
     const Projects = sequelize.define("projects", { 
-        projectName: {
+        project_id: {
+            type: Sequelize.INTEGER,
+        },
+        project_name: {
             type: Sequelize.STRING,
+            allowNull: false
         },
         bio: {
             type: Sequelize.STRING,
+            allowNull: false
         },
         drawing_urls: {
             type: Sequelize.STRING,
@@ -16,11 +21,12 @@ module.exports = (sequelize, Sequelize) => {
         rendering_urls: {
             type: Sequelize.STRING,
         },
-        created_by: {
-            type: Sequelize.STRING,
+        creator_id: {
+            type: Sequelize.INTEGER,
         },
-        posted_on: {
+        creator_name: {
             type: Sequelize.STRING,
+            allowNull: false
         },
         like_count: {
             type: Sequelize.INTEGER,

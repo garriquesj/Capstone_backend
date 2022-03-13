@@ -6,8 +6,8 @@ module.exports = app => {
     // Create new project
     router.post("/", projects.create);
     
-    // Search all projects by projectName
-    router.get("/", projects.findAllBySearch);
+    // Search all projects 
+    router.get("/", projects.findAll);
     
     // Search all projects by User
     router.get("/byUser/:created_by", projects.findAllByUser);
@@ -15,7 +15,7 @@ module.exports = app => {
     router.get("/byDate/:posted_on", projects.findAllByUser);
     
     // Retrieve all projects
-    router.get("/all", projects.findAll);
+    // router.get("/all", projects.findAll);
 
     // Retrieve single project by ID
     router.get("/:id", projects.findOne);

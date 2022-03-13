@@ -28,9 +28,9 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // require DB models
-db.projects = require("./projectsModel")(sequelize, Sequelize);
+db.projects = require("./projectModel")(sequelize, Sequelize);
 db.users = require("./userModel.js")(sequelize, Sequelize);
-db.likes = require("./likesModel.js")(sequelize, Sequelize);
+db.likes = require("./collectionModel.js")(sequelize, Sequelize);
 //Establishing many-to-many relationship
 // @TODO Look into establishing many-to-many and finding join table
 db.projects.belongsTo(db.users, {
