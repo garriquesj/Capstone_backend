@@ -46,9 +46,9 @@ db.likes.belongsTo(db.users, {
         });
     
     
-// db.likes.belongsToMany(db.projects, {
-//         through: "projects_liked",//relational table
-//         as: "likes",
+// db.collections.belongsToMany(db.projects, {
+//         through: "collected_projects",//relational table
+//         as: "userCollection",
         
 //     });//uncertain
     

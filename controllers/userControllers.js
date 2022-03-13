@@ -14,7 +14,7 @@ if (!req.body.username || !req.body.password|| !req.body.email) {// why ois it '
 const user = {
     username: req.body.username,
     email: req.body.email,
-    password_: req.body.password,
+    password: req.body.password,
     bio: req.body.bio,
     likes: req.body.likes
 }
