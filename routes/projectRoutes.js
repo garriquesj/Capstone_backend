@@ -8,17 +8,18 @@ module.exports = app => {
     
     // Search all projects 
     router.get("/all", projects.findAll);
-    
-    // Search all projects by User
-    router.get("/byUser/:created_by", projects.findAllByUser);
-    // Search all projects by date
-    router.get("/byDate/:posted_on", projects.findAllByUser);//why by user this feels incorrect
-    
-    // Retrieve all projects
-    // router.get("/all", projects.findAll);
-
-    // Retrieve single project by ID
+     // Retrieve single project by ID
     router.get("/:id", projects.findOne);
+    
+     // Retrieve all by search gott work on these
+    router.get("name/:project_name", projects.findAllBySearch);
+
+     // Retrieve all specific user
+    // // Search all projects by date
+    router.get("/byUser/:id", projects.findAllByUser);//fix
+    
+   
+
 
     // Update Single project
     router.put("/:id", projects.update);

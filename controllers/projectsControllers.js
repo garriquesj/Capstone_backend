@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 // create and save projects 
 exports.create = (req, res) => {
     console.log(req.body);
-    if (!req.body.project_name ||!req.body.bio || !req.body.username) { 
+    if (!req.body.project_name ||!req.body.bio || !req.body.UserId) { 
         res.status(400).send({
             message: "Content cannot be empty."
         });
@@ -18,7 +18,7 @@ const project = {
     // drawing_urls: req.body.drawing_urls,
     // archModel_urls: req.body.archModel_urls,
     // rendering_urls: req.body.rendering_urls,
-    username: req.body.username,
+    UserId: req.body.UserId,
     
 }
 //create project
@@ -36,15 +36,15 @@ Project.create(project)
 
 // Search Projects by project name incase more than one project has the ssame name to return them 
 exports.findAllBySearch = (req, res) => {
-    const projectName = req.query.projectName;
+    const project_name = req.query.project_name;
     
     //think up ways to break up project on front pages
     //each route will grab a url model to rep categories
 
-    let condition = projectName ? { projectName: { [Op.iLike]: `%${projectName}%` } } : null;//research ilike
+    // let condition = project_name ? { project_name: { [Op.iLike]: `%${project_name}%` } } : null;//research ilike
     //or i could do where project name =project name confere with howie to see which is more effieceint
 
-    Project.findAll({ where: condition })
+    Project.findAll({ where: project_name })
         .then(data => {
         res.send(data);
         })
@@ -57,7 +57,7 @@ exports.findAllBySearch = (req, res) => {
 };
 
 
-// all projects
+// all projects______________________________________
     exports.findAll = (req, res) => {
 
     Project.findAll()
@@ -76,9 +76,10 @@ exports.findAllBySearch = (req, res) => {
     exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Project.findAll({
-        where: { id: id},
-        include: "users"
+    Project.findOne({
+        where: { id: id}
+        // ,
+        // include: "project_name"
     })
         .then(data => {
         if (data) {
@@ -98,30 +99,26 @@ exports.findAllBySearch = (req, res) => {
     };
 
     exports.findAllByUser = (req, res) => {
-    const created_by = req.params.created_by;
-    
-    Project.findAll({
-        where: {
-        created_by: created_by
-        }
-    })
+    const UserId = req.params.UserId;
+    let condition = UserId ? { UserId: { [Op.iLike]: `%${UserId}%` } } : null;
+    Project.findAll({ where: condition })
         .then(data => {
         res.send(data);
         })
         .catch(err => {
         res.status(500).send({
             message:
-            err.message || "Some error occurred while retrieving projects by creator."
+            err.message || "Some error occurred while retrieving projects by this user."
         });
         });
     };
 // find by date
-    exports.findAllByDate = (req, res) => {
-        const posted_on = req.params.posted_on;
+    exports.findAllByName = (req, res) => {
+        const project_name = req.params.project_name;
 
         Project.findAll({
             where: {
-            posted_on: posted_on
+            project_name: project_name
             }
         })
             .then(data => {

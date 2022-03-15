@@ -9,7 +9,7 @@ module.exports = app => {
     router.post("/signup", users.create);
     
 
-    //  router.get("/", users.findAllBySearch);//FIX THIS
+    // router.get("/", users.findAllBySearch);//FIX THIS
 
     // Retrieve all Users
     router.get("/all", users.findAll);

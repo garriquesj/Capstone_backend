@@ -40,3 +40,86 @@ INSERT INTO projects ( project_name, bio, drawing_urls, archmodel_urls, renderin
 VALUES(
     'JsonProject 1','a thing about a placel','{{"drawingurls1","drawingurls2"}}','{{"modelurl"}}','{{"renderingurl"}}',1, 'Json'
     );
+
+
+
+    {
+        "id": 3,
+        "username": "json",
+        "email": "jso@gmail",
+        "password": "json",
+        "bio": "wolmarian",
+        "freelance": true,
+        "createdAt": "2022-03-15T19:01:47.197Z",
+        "updatedAt": "2022-03-15T19:01:47.197Z"
+    },
+    {
+        "id": 2,
+        "username": "eric",
+        "email": "eric@gmail",
+        "password": "passworderic",
+        "bio": "DUUUUUUKEEEEE",
+        "freelance": true,
+        "createdAt": "2022-03-15T19:00:53.490Z",
+        "updatedAt": "2022-03-15T19:07:13.293Z"
+    },
+    {
+        "id": 1,
+        "username": "troy",
+        "email": "troy@gmail",
+        "password": "password",
+        "bio": "the Sonics",
+        "freelance": true,
+        "createdAt": "2022-03-15T18:41:05.213Z",
+        "updatedAt": "2022-03-15T19:08:46.527Z"
+    }
+
+
+
+-- -------------------------------
+
+    {
+        "id": 1,
+        "project_name": "troy",
+        "bio": "troybio",
+        "drawing_urls": null,
+        "archModel_urls": null,
+        "rendering_urls": null,
+        "createdAt": "2022-03-15T18:44:06.832Z",
+        "updatedAt": "2022-03-15T18:44:06.832Z",
+        "UserId": 1
+    },
+    {
+        "id": 2,
+        "project_name": "orject 2",
+        "bio": "2nd projbio",
+        "drawing_urls": null,
+        "archModel_urls": null,
+        "rendering_urls": null,
+        "createdAt": "2022-03-15T19:17:46.611Z",
+        "updatedAt": "2022-03-15T19:17:46.611Z",
+        "UserId": 3
+    },
+    {
+        "id": 3,
+        "project_name": "porject 4",
+        "bio": "3rdprojbio",
+        "drawing_urls": null,
+        "archModel_urls": null,
+        "rendering_urls": null,
+        "createdAt": "2022-03-15T19:18:53.661Z",
+        "updatedAt": "2022-03-15T19:18:53.661Z",
+        "UserId": 2
+    },
+    {
+        "id": 4,
+        "project_name": "porject duke",
+        "bio": "dukeprojbio",
+        "drawing_urls": null,
+        "archModel_urls": null,
+        "rendering_urls": null,
+        "createdAt": "2022-03-15T19:19:46.704Z",
+        "updatedAt": "2022-03-15T19:19:46.704Z",
+        "UserId": 2
+    }
+]

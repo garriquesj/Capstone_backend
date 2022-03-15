@@ -40,13 +40,13 @@ db.users = require("./userModel.js")(sequelize, Sequelize);
 //     // foreignKey: "id"
 //     });
 
-    db.users.hasMany(db.projects, {
-        // through: "user_projects",
-        // as: "projects",
-        foreignKey: "id"
-        });
-        db.projects.belongsTo(db.users);
-    
+    // db.users.hasMany(db.projects, {
+    //     // through: "user_projects",
+    //     as: "projects",
+    //     foreignKey: "UserId"
+    //     });
+    //     db.projects.belongsTo(db.users);
+        db.users.hasMany(db.projects, { as: "projects" });
 // db.collections.belongsTo(db.users, {
 //         through: "user_collection",
 //         as: "collections",

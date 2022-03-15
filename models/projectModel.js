@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, Sequelize) => {
-    const Projects = sequelize.define("Project", { 
+    const Projects = sequelize.define("projects", { 
         
         project_name: {
             type: Sequelize.STRING,
@@ -19,11 +19,11 @@ module.exports = (sequelize, Sequelize) => {
         rendering_urls: {
             type: Sequelize.STRING,
         },
-        username: {
-            type: Sequelize.STRING,
-            allowNull:false,
-            references:{ model: 'Users', key :'username'}//connects to user table
-        },
+        // UserId: {
+        //     type: Sequelize.INTEGER,
+        //     allowNull:false,
+        //     references:{ model: 'users', key :'id'}//connects to user table
+        // },
         
     });
     return Projects;
