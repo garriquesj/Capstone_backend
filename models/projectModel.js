@@ -1,9 +1,7 @@
 
 module.exports = (sequelize, Sequelize) => {
-    const Projects = sequelize.define("projects", { 
-        project_id: {
-            type: Sequelize.INTEGER,
-        },
+    const Projects = sequelize.define("Project", { 
+        
         project_name: {
             type: Sequelize.STRING,
             allowNull: false
@@ -21,16 +19,12 @@ module.exports = (sequelize, Sequelize) => {
         rendering_urls: {
             type: Sequelize.STRING,
         },
-        creator_id: {
-            type: Sequelize.INTEGER,
-        },
-        creator_name: {
+        username: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull:false,
+            references:{ model: 'Users', key :'username'}//connects to user table
         },
-        like_count: {
-            type: Sequelize.INTEGER,
-        },
+        
     });
     return Projects;
 };

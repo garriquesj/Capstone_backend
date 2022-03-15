@@ -1,22 +1,23 @@
 const db = require("../models");
-const Project = db.projects;
+// const Project = db.projects;
 const User = db.users;
-const Op = db.Sequelize.Op;//whats this for
+
 
 // Create and Save User_____________________________
 exports.create = (req, res) => {
-if (!req.body.username || !req.body.password|| !req.body.email) {// why ois it 'or' and not 'and'
+if (!req.body.username || !req.body.email || !req.body.password || !req.body.bio || !req.body.freelance) {
     res.status(400).send({
-
+        message:"this content can not be empty",
     });
     return;
 }
 const user = {
+    // id:req.body.id,
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
     bio: req.body.bio,
-    likes: req.body.likes
+    freelance: req.body.freelance
 }
 
 User.create(user)
@@ -24,6 +25,7 @@ User.create(user)
     res.send(data);
     })
     .catch(err => {
+        // console.log(err.message)
     res.status(500).send({
         message:
         err.message || "An error occured while creating User."

@@ -8,6 +8,7 @@ const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB,dbConfig.USER,dbConfig.PASSWORD, {
     host: dbConfig.HOST,
     dialect: dbConfig.dialect,
+    operatorsAliases: false,
     logging: (...msg) => console.log(msg),
     // @TODO what is pool??
     pool: {
@@ -30,23 +31,30 @@ db.sequelize = sequelize;
 // require DB models
 db.projects = require("./projectModel")(sequelize, Sequelize);
 db.users = require("./userModel.js")(sequelize, Sequelize);
-db.likes = require("./collectionModel.js")(sequelize, Sequelize);
-//Establishing many-to-many relationship
-// @TODO Look into establishing many-to-many and finding join table
-db.projects.belongsTo(db.users, {
-    through: "user_projects",
-    as: "users",
-    // foreignKey: "user_id"
-    });
+// db.collections = require("./collectionModel.js")(sequelize, Sequelize);
+//Establishing one-to-many relationship
 
-db.likes.belongsTo(db.users, {
-        through: "user_likes",
-        as: "users",
-        // foreignKey: "user_id"
+// db.projects.belongsToMany(db.users, {
+//     through: "user_projects",
+//     as: "users",
+//     // foreignKey: "id"
+//     });
+
+    db.users.hasMany(db.projects, {
+        // through: "user_projects",
+        // as: "projects",
+        foreignKey: "id"
         });
+        db.projects.belongsTo(db.users);
+    
+// db.collections.belongsTo(db.users, {
+//         through: "user_collection",
+//         as: "collections",
+//         // foreignKey: "user_id"
+//         });
     
     
-// db.collections.belongsToMany(db.projects, {
+// db.collections.belongsToMany(db.users, {
 //         through: "collected_projects",//relational table
 //         as: "userCollection",
         

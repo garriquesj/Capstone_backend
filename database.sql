@@ -9,15 +9,14 @@ CREATE TABLE users (
     freelance BOOLEAN NOT NULL
 );
 CREATE TABLE projects (
-    project_id serial PRIMARY KEY,
+    
     project_name VARCHAR (50) NOT NULL,
     bio VARCHAR (500) NOT NULL, 
     drawing_urls VARCHAR (500) ARRAY,
     archModel_urls VARCHAR (500) ARRAY,
     rendering_urls VARCHAR (500) ARRAY,
-    creator_id INTEGER NOT NULL REFERENCES users (user_id) ON DELETE CASCADE,
-    creator_name VARCHAR NOT NULL REFERENCES users (username) ON DELETE CASCADE,
-    like_count INTEGER DEFAULT 0  
+    username VARCHAR NOT NULL REFERENCES users (username) ON DELETE CASCADE
+    
 );
 CREATE TABLE collections (
     collection_id serial PRIMARY KEY,

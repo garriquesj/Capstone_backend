@@ -212,5 +212,8 @@
   "bugs": {
     "url": "https://github.com/garriquesj/Capstone_backend/issues"
   },
-  "homepage": "https://github.com/garriquesj/Capstone_backend#readme"
+  "homepage": "https://github.com/garriquesj/Capstone_backend#readme",
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1"
+  }
 }

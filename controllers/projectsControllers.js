@@ -5,21 +5,21 @@ const Op = db.Sequelize.Op;
 
 // create and save projects 
 exports.create = (req, res) => {
-    if (!req.body.projectName || !req.body.created_by) { 
+    console.log(req.body);
+    if (!req.body.project_name ||!req.body.bio || !req.body.username) { 
         res.status(400).send({
             message: "Content cannot be empty."
         });
         return;
     }
 const project = {
-    projectname: req.body.projectname,
+    project_name: req.body.project_name,
     bio: req.body.bio,
-    drawing_urls: req.body.drawing_urls,
-    archModel_urls: req.body.archModel_urls,
-    rendering_urls: req.body.rendering_urls,
-    created_by: req.body.created_by,
-    posted_on: req.body.posted_on,
-    like_count: req.body.like_count, 
+    // drawing_urls: req.body.drawing_urls,
+    // archModel_urls: req.body.archModel_urls,
+    // rendering_urls: req.body.rendering_urls,
+    username: req.body.username,
+    
 }
 //create project
 Project.create(project)
@@ -187,7 +187,7 @@ exports.findAllBySearch = (req, res) => {
         });
     };
     
-    // Set Article's User
+
     
 
     // Deletes user_project entry from project side

@@ -6,4 +6,4 @@
 //   user: user,
 // };
 
-// module.exports = controllers;
+// module.exports = routes;

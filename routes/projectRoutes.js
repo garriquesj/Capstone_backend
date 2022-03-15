@@ -4,15 +4,15 @@ module.exports = app => {
     let router = require("express").Router();
 
     // Create new project
-    router.post("/", projects.create);
+    router.post("/new", projects.create);
     
     // Search all projects 
-    router.get("/", projects.findAll);
+    router.get("/all", projects.findAll);
     
     // Search all projects by User
     router.get("/byUser/:created_by", projects.findAllByUser);
     // Search all projects by date
-    router.get("/byDate/:posted_on", projects.findAllByUser);
+    router.get("/byDate/:posted_on", projects.findAllByUser);//why by user this feels incorrect
     
     // Retrieve all projects
     // router.get("/all", projects.findAll);
