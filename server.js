@@ -6,6 +6,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+
 // create Express app
 const app = express()
 // database
@@ -16,7 +17,7 @@ db.sequelize.sync().then(() => {//wth is this thing
 });
 
 let corsOptions = {
-    origin: "http://localhost:9001"
+    origin: "http://localhost:3000"
 };
     //middleware
 app.use(cors(corsOptions));
@@ -28,14 +29,10 @@ app.use(bodyParser.json());
 require("./routes/projectRoutes")(app);
 require("./routes/userRoutes")(app);
 
-//     //routes
+
 app.get("/",(req,res) => { 
     res.send('hello world');
 });
 
 
-
-    //show
-    //detail
-    //istener
 app.listen(PORT, () => console.log(`ITS OVER ${PORT}!!!`));

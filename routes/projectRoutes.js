@@ -15,19 +15,15 @@ module.exports = app => {
     router.get("name/:project_name", projects.findAllBySearch);
 
      // Retrieve all specific user
-    // // Search all projects by date
+
     router.get("/byUser/:id", projects.findAllByUser);//fix
-    
-   
-
-
+ 
     // Update Single project
     router.put("/:id", projects.update);
     
     // delete Single project
     router.delete("/:id", projects.delete);
 
-    // // delete user for project
     // router.delete("/:id/deleteUser", projects.deleteProjectUser)
 
     app.use('/projects', router);//double check this
